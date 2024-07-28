@@ -7,7 +7,7 @@ const Menu: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap justify-center items-center">
           <Link
-            to="/"
+            to="/placee"
             className="text-white hover:bg-red-900 bg-gray-600 bg-opacity-50 px-5 py-3 rounded-md text-sm sm:text-base font-medium m-1 sm:m-2"
           >
             Home
