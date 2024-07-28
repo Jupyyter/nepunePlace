@@ -13,15 +13,14 @@ const App: React.FC = () => {
       <main className="text-center p-4">
         <h1 className="text-4xl font-bold mb-4">this is a cool heading</h1>
         <p className="text-lg">
-          this site is soo cool, you can see things like: jupiter (the
-          planet), the "about me" page, my projects, and event my contacts!
+          this site is soo cool, you can see things like: jupiter (the planet), the "about me" page, my projects, and even my contacts!
         </p>
       </main>
     </div>
   );
 
   return (
-    <Router>
+    <Router basename="/nepunePlace">
       <div
         className="min-h-screen flex flex-col"
         style={{
@@ -44,8 +43,7 @@ const App: React.FC = () => {
         </Routes>
         <footer className="mt-auto bg-black bg-opacity-25">
           <p className="px-5 text-xs">
-            &copy; 2024 nepune. i should say something interesting but please dont
-            steal. steal bad. jail.
+            &copy; 2024 nepune. i should say something interesting but please don't steal. steal bad. jail.
           </p>
         </footer>
       </div>
