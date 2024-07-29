@@ -5,7 +5,7 @@ function NoPage() {
               <main className="text-center p-4">
                 <h1 className="text-4xl font-bold mb-4">you thought i didnt think you would change the url?</h1>
                 <p className="text-lg">
-                you thought i didnt think you would change the url?
+                of course i added this page im a professional fter all please give me a job
                 </p>
               </main>
             </div>

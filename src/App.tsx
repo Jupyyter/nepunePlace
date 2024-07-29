@@ -1,5 +1,4 @@
 import "./App.css";
-import background from "../imgs/jupiter.jpg";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Menu from "./Menu";
 import About from "./About";
@@ -24,7 +23,7 @@ const App: React.FC = () => {
       <div
         className="min-h-screen flex flex-col"
         style={{
-          backgroundImage: `url(${background})`,
+          backgroundImage: `url(imgs/jupiter.jpg)`,
           backgroundSize: "auto 57vh",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "top right",
@@ -35,7 +34,7 @@ const App: React.FC = () => {
           <Menu />
         </div>
         <Routes>
-          <Route path="/placee" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/projects" element={<Projects />} />
