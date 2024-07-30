@@ -1,4 +1,6 @@
 import { useState } from "react";
+import phos from "../imgs/phos.jpg"
+import jhonny from "../imgs/jhonny.png"
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -21,42 +23,42 @@ function Projects() {
   const projects: Project[] = [
     {
       id: 0,
-      title: "Project 1",
-      thumbnail: "imgs/phos.jpg",
+      title: "jhonny gaming",
+      thumbnail: jhonny,
       description:
         "This is a description for Project 1. It explains what the project does and why it's interesting.",
-      downloadUrl: "/path/to/project1.zip",
+      downloadUrl: "./jhonnyGame.zip",
     },
     {
       id: 1,
-      title: "Project 1",
-      thumbnail: "imgs/phos.jpg",
+      title: "Project 2",
+      thumbnail: phos,
       description:
-        "This is a description for Project 1. It explains what the project does and why it's interesting.",
+        "This is a description for Project 3. It explains what the project does and why it's interesting.",
       downloadUrl: "/path/to/project1.zip",
     },
     {
       id: 2,
-      title: "Project 1",
-      thumbnail: "imgs/phos.jpg",
+      title: "Project 3",
+      thumbnail: phos,
       description:
-        "This is a description for Project 1. It explains what the project does and why it's interesting.",
+        "This is a description for Project 4. It explains what the project does and why it's interesting.",
       downloadUrl: "/path/to/project1.zip",
     },
     {
       id: 3,
-      title: "Project 1",
-      thumbnail: "imgs/phos.jpg",
+      title: "Project 4",
+      thumbnail: phos,
       description:
-        "This is a description for Project 1. It explains what the project does and why it's interesting.",
+        "This is a description for Project 5. It explains what the project does and why it's interesting.",
       downloadUrl: "/path/to/project1.zip",
     },
     {
       id: 4,
-      title: "Project 1",
-      thumbnail: "imgs/phos.jpg",
+      title: "Project 5",
+      thumbnail: phos,
       description:
-        "This is a description for Project 1. It explains what the project does and why it's interesting.",
+        "This is a description for Project 6. It explains what the project does and why it's interesting.",
       downloadUrl: "/path/to/project1.zip",
     },
     // ... Add similar data for other projects

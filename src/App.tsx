@@ -15,6 +15,9 @@ const App: React.FC = () => {
         <p className="text-lg">
           this site is soo cool, you can see things like: jupiter (the planet), the "about me" page, my projects, and even my contacts!
         </p>
+        <p className="text-lg">
+        also you might not want to refresh this site as github panicks every time and throws a 404 error (i dont have money for my own servers)
+        </p>
       </main>
     </div>
   );
