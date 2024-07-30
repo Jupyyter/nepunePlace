@@ -1,12 +1,12 @@
 {
-  "homepage": "https://Jupyyter.github.io/nepunePlace",
+  "homepage": "https://Jupyyter.github.io/nepunePlace/",
   "name": "nepuneplace",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -r https://github.com/Jupyyter/nepunePlace",
+    "deploy": "gh-pages -d dist -r https://github.com/Jupyyter/nepunePlace/",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
