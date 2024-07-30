@@ -21,10 +21,10 @@ function Projects() {
   const projects: Project[] = [
     {
       id: 0,
-      title: "jhonny..,",
+      title: "jhonny",
       thumbnail: jhonny,
       description: "this game is fun.",
-      downloadUrl: `${import.meta.env.BASE_URL}jhonnyGame.zip`,
+      downloadUrl: `jhonnyGame.zip`,
     }
 
   ];
