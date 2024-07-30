@@ -1,5 +1,4 @@
 import { useState } from "react";
-import phos from "../imgs/phos.jpg"
 import jhonny from "../imgs/jhonny.png"
 
 function Projects() {
