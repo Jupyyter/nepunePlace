@@ -1,5 +1,6 @@
 import { useState } from "react";
 import jhonny from "../imgs/jhonny.png"
+import phos from "../imgs/phos.jpg"
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -21,11 +22,39 @@ function Projects() {
   const projects: Project[] = [
     {
       id: 0,
-      title: "jhonny",
+      title: "jhonny,.",
       thumbnail: jhonny,
       description: "this game is fun.",
       downloadUrl: `jhonnyGame.zip`,
-    }
+    },
+    {
+      id: 1,
+      title: "project1",
+      thumbnail: phos,
+      description: "This is a description for Project 2.",
+      downloadUrl: `jhonnyGame.zip`,
+    },
+    {
+      id: 2,
+      title: "project2",
+      thumbnail: phos,
+      description: "This is a description for Project 3.",
+      downloadUrl: `jhonnyGame.zip`,
+    },
+    {
+      id: 3,
+      title: "project3",
+      thumbnail: phos,
+      description: "This is a description for Project 4.",
+      downloadUrl: `jhonnyGame.zip`,
+    },
+    {
+      id: 4,
+      title: "project4",
+      thumbnail: phos,
+      description: "This is a description for Project 5.",
+      downloadUrl: `jhonnyGame.zip`,
+    },
 
   ];
   return (
@@ -33,8 +62,7 @@ function Projects() {
       <header className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">My Projects</h1>
         <p className="text-lg mb-4">
-          Here are some of the projects I've worked on. Each one represents a
-          unique challenge and learning experience.
+          projects here and there and here and everywhere
         </p>
       </header>
 
