@@ -18,7 +18,6 @@ function Projects() {
     downloadUrl: string;
   }
 
-  // Use Vite's import.meta.env.BASE_URL instead of process.env.PUBLIC_URL
   const baseUrl = import.meta.env.BASE_URL || '';
 
   const projects: Project[] = [
@@ -27,36 +26,8 @@ function Projects() {
       title: "jhonny..",
       thumbnail: jhonny,
       description: "this game is fun.",
-      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
-    },
-    {
-      id: 1,
-      title: "project1",
-      thumbnail: phos,
-      description: "This is a description for Project 2.",
-      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
-    },
-    {
-      id: 2,
-      title: "project2",
-      thumbnail: phos,
-      description: "This is a description for Project 3.",
-      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
-    },
-    {
-      id: 3,
-      title: "project3",
-      thumbnail: phos,
-      description: "This is a description for Project 4.",
-      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
-    },
-    {
-      id: 4,
-      title: "project4",
-      thumbnail: phos,
-      description: "This is a description for Project 5.",
-      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
-    },
+      downloadUrl: `${import.meta.env.BASE_URL}jhonnyGame.zip`,
+    }
 
   ];
   return (
@@ -126,7 +97,7 @@ function Projects() {
                 {selectedProject.description}
               </p>
               <a
-                href="jhonnyGame.zip"
+                href={selectedProject.downloadUrl}
                 download
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               >
