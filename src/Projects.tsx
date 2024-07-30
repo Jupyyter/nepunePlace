@@ -23,11 +23,11 @@ function Projects() {
   const projects: Project[] = [
     {
       id: 0,
-      title: "jhonny gaming",
+      title: "jhonny",
       thumbnail: jhonny,
       description:
         "This is a description for Project 1. It explains what the project does and why it's interesting.",
-      downloadUrl: "./jhonnyGame.zip",
+      downloadUrl: "jhonnyGame.zip",
     },
     {
       id: 1,
@@ -134,7 +134,7 @@ function Projects() {
                 download
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               >
-                Download Project
+                Windows
               </a>
             </div>
           </div>
