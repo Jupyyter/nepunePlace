@@ -24,7 +24,7 @@ function Projects() {
   const projects: Project[] = [
     {
       id: 0,
-      title: "jhonny",
+      title: "jhonny.",
       thumbnail: jhonny,
       description: "this game is fun.",
       downloadUrl: `${baseUrl}/jhonnyGame.zip`,
@@ -126,7 +126,7 @@ function Projects() {
                 {selectedProject.description}
               </p>
               <a
-                href={selectedProject.downloadUrl}
+                href="jhonnyGame.zip"
                 download
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               >
