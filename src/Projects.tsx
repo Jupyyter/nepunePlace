@@ -1,8 +1,57 @@
 import { useState } from "react";
+import jhonny from "../imgs/jhonny.png";
 import phos from "../imgs/phos.jpg"
-import jhonny from "../imgs/jhonny.png"
 
 function Projects() {
+  interface Project {
+    id: number;
+    title: string;
+    thumbnail: string;
+    description: string;
+    downloadUrl: string;
+  }
+
+  // Use Vite's import.meta.env.BASE_URL instead of process.env.PUBLIC_URL
+  const baseUrl = import.meta.env.BASE_URL || '';
+
+  const projects: Project[] = [
+    {
+      id: 0,
+      title: "jhonny",
+      thumbnail: jhonny,
+      description: "This is a description for Project 1.",
+      downloadUrl: `${baseUrl}jhonnyGame.zip`,
+    },
+    {
+      id: 0,
+      title: "project1",
+      thumbnail: phos,
+      description: "This is a description for Project 2.",
+      downloadUrl: `${baseUrl}jhonnyGame.zip`,
+    },
+    {
+      id: 0,
+      title: "project2",
+      thumbnail: phos,
+      description: "This is a description for Project 3.",
+      downloadUrl: `${baseUrl}jhonnyGame.zip`,
+    },
+    {
+      id: 0,
+      title: "project3",
+      thumbnail: phos,
+      description: "This is a description for Project 4.",
+      downloadUrl: `${baseUrl}jhonnyGame.zip`,
+    },
+    {
+      id: 0,
+      title: "project4",
+      thumbnail: phos,
+      description: "This is a description for Project 5.",
+      downloadUrl: `${baseUrl}jhonnyGame.zip`,
+    },
+  ];
+
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleProjectClick = (project: Project) => {
@@ -12,57 +61,7 @@ function Projects() {
   const closeProjectDetails = () => {
     setSelectedProject(null);
   };
-  interface Project {
-    id: number;
-    title: string;
-    thumbnail: string;
-    description: string;
-    downloadUrl: string;
-  }
 
-  const projects: Project[] = [
-    {
-      id: 0,
-      title: "jhonny",
-      thumbnail: jhonny,
-      description:
-        "This is a description for Project 1. It explains what the project does and why it's interesting.",
-      downloadUrl: "jhonnyGame.zip",
-    },
-    {
-      id: 1,
-      title: "Project 2",
-      thumbnail: phos,
-      description:
-        "This is a description for Project 3. It explains what the project does and why it's interesting.",
-      downloadUrl: "/path/to/project1.zip",
-    },
-    {
-      id: 2,
-      title: "Project 3",
-      thumbnail: phos,
-      description:
-        "This is a description for Project 4. It explains what the project does and why it's interesting.",
-      downloadUrl: "/path/to/project1.zip",
-    },
-    {
-      id: 3,
-      title: "Project 4",
-      thumbnail: phos,
-      description:
-        "This is a description for Project 5. It explains what the project does and why it's interesting.",
-      downloadUrl: "/path/to/project1.zip",
-    },
-    {
-      id: 4,
-      title: "Project 5",
-      thumbnail: phos,
-      description:
-        "This is a description for Project 6. It explains what the project does and why it's interesting.",
-      downloadUrl: "/path/to/project1.zip",
-    },
-    // ... Add similar data for other projects
-  ];
   return (
     <div className="flex flex-col items-center justify-start min-h-screen p-4">
       <header className="text-center mb-8">
