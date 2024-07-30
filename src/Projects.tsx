@@ -1,7 +1,15 @@
 import { useState } from "react";
-import jhonny from "../imgs/jhonny.png";
+import phos from "../imgs/phos.jpg"
+import jhonny from "../imgs/jhonny.png"
 
 function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const handleProjectClick = (project: Project) => {
+    setSelectedProject(project.id === selectedProject?.id ? null : project);
+  };
+  const closeProjectDetails = () => {
+    setSelectedProject(null);
+  };
   interface Project {
     id: number;
     title: string;
@@ -10,7 +18,7 @@ function Projects() {
     downloadUrl: string;
   }
 
-  // Use Vite's import.meta.env.BASE_URL
+  // Use Vite's import.meta.env.BASE_URL instead of process.env.PUBLIC_URL
   const baseUrl = import.meta.env.BASE_URL || '';
 
   const projects: Project[] = [
@@ -18,21 +26,39 @@ function Projects() {
       id: 0,
       title: "jhonny",
       thumbnail: jhonny,
-      description: "This is a description for Project 1.",
-      downloadUrl: `${baseUrl}jhonnyGame.zip`,
-    }
+      description: "this game is fun.",
+      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
+    },
+    {
+      id: 1,
+      title: "project1",
+      thumbnail: phos,
+      description: "This is a description for Project 2.",
+      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
+    },
+    {
+      id: 2,
+      title: "project2",
+      thumbnail: phos,
+      description: "This is a description for Project 3.",
+      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
+    },
+    {
+      id: 3,
+      title: "project3",
+      thumbnail: phos,
+      description: "This is a description for Project 4.",
+      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
+    },
+    {
+      id: 4,
+      title: "project4",
+      thumbnail: phos,
+      description: "This is a description for Project 5.",
+      downloadUrl: `${baseUrl}/jhonnyGame.zip`,
+    },
+
   ];
-
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const handleProjectClick = (project: Project) => {
-    setSelectedProject(project.id === selectedProject?.id ? null : project);
-  };
-
-  const closeProjectDetails = () => {
-    setSelectedProject(null);
-  };
-
   return (
     <div className="flex flex-col items-center justify-start min-h-screen p-4">
       <header className="text-center mb-8">
@@ -104,7 +130,7 @@ function Projects() {
                 download
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
               >
-                Download for Windows
+                Windows
               </a>
             </div>
           </div>
