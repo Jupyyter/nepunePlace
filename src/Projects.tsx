@@ -130,14 +130,14 @@ function Projects() {
       id: 1,
       title: "video in ascii",
       thumbnail: badApple,
-      description: "this thing plays any video in ascii. the fize of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can abuse their servers further more. even after it download wait until the button on which you pressed to download it, does not show 'combining files'",
+      description: "this thing plays any video in ascii. the size of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can continue abusing their servers.",
       downloadUrls: ["asciiVideo.zip", "badApple.zip"],
     },
     {
       id: 2,
       title: "gabriel the hungry",
       thumbnail: GabrielIsHungry,
-      description: "this is the story of gabriel",
+      description: "this is the story of gabriel. the size of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can continue abusing their servers.",
       downloadUrls: [`GabrielIsHungry.zip`,'GabrielIsHungry0.zip'],
     },
     {
@@ -158,7 +158,7 @@ function Projects() {
       id: 5,
       title: "the 3 room adventure",
       thumbnail: cppGame,
-      description: "this looks too simple for a game, and it is, except the fact that it was made in c++ using sdl2 instead of a game engine. the fize of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can abuse their servers further more. even after it download wait until the button on which you pressed to download it, does not show 'combining files'",
+      description: "this looks too simple for a game, and it is, except the fact that it was made in c++ using sdl2 instead of a game engine. the size of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can continue abusing their servers.",
       downloadUrls: [`cppGame.zip`,'cppGame0.zip'],
     },
     {
