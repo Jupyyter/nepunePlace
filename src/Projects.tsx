@@ -1,62 +1,175 @@
 import { useState } from "react";
-import jhonny from "../imgs/jhonny.png"
-import phos from "../imgs/phos.jpg"
+import JSZip from "jszip";
+import jhonny from "../imgs/jhonny.png";
+import badApple from "../imgs/badApple.png";
+import GabrielIsHungry from "../imgs/GabrielIsHungry.png";
+import bingChilling from "../imgs/bingChilling.png";
+import shadowGang from "../imgs/shadowGang.png";
+import cppGame from "../imgs/cppGame.png";
+import checkers from "../imgs/checkers.png";
+
+interface Project {
+  id: number;
+  title: string;
+  thumbnail: string;
+  description: string;
+  downloadUrls: string[];
+}
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project.id === selectedProject?.id ? null : project);
   };
+
   const closeProjectDetails = () => {
     setSelectedProject(null);
   };
-  interface Project {
-    id: number;
-    title: string;
-    thumbnail: string;
-    description: string;
-    downloadUrl: string;
-  }
 
+  const handleDownload = (downloadUrls: string[]) => {
+    downloadUrls.forEach((url) => {
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = url.split("/").pop() || "";
+      link.click();
+    });
+  };
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function combineAndDownload(project: Project) {
+    setIsLoading(true);
+
+    if (!("showSaveFilePicker" in window)) {
+      alert(
+        "Your browser doesn't support this feature. Files will be downloaded separately."
+      );
+      handleDownload(project.downloadUrls);
+      setIsLoading(false);
+      return;
+    }
+
+    let saveHandle;
+    try {
+      // Call showSaveFilePicker immediately after user interaction
+      saveHandle = await window.showSaveFilePicker({
+        suggestedName: `${project.title}.zip`,
+        types: [
+          {
+            description: "ZIP Archive",
+            accept: { "application/zip": [".zip"] },
+          },
+        ],
+      });
+    } catch (err) {
+      // User cancelled the save dialog
+      if (err instanceof Error && err.name === "AbortError") {
+        console.log("File save cancelled by user");
+      } else {
+        console.error("Error opening file picker:", err);
+        alert(
+          "Unable to open file picker. Files will be downloaded separately."
+        );
+        handleDownload(project.downloadUrls);
+      }
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const mainZip = new JSZip();
+
+      // Fetch all files, extract their contents, and add to the main zip
+      await Promise.all(
+        project.downloadUrls.map(async (url, index) => {
+          const response = await fetch(url);
+          const blob = await response.blob();
+
+          // Read the zip file
+          const zip = await JSZip.loadAsync(blob);
+
+          // Extract and add each file from the zip to the main zip
+          await Promise.all(
+            Object.keys(zip.files).map(async (filename) => {
+              const content = await zip.files[filename].async("blob");
+              mainZip.file(filename, content);
+            })
+          );
+        })
+      );
+
+      // Generate the final zip file
+      const content = await mainZip.generateAsync({ type: "blob" });
+
+      // Use the previously obtained file handle to save the file
+      const writable = await saveHandle.createWritable();
+      await writable.write(content);
+      await writable.close();
+
+      alert("Files combined and saved successfully!");
+    } catch (err) {
+      console.error("Error saving file:", err);
+      alert(
+        "There was an error saving the combined file. Files will be downloaded separately."
+      );
+      handleDownload(project.downloadUrls);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const projects: Project[] = [
     {
       id: 0,
-      title: "jhonny,.",
+      title: "jhonny",
       thumbnail: jhonny,
-      description: "this game is fun.",
-      downloadUrl: `jhonnyGame.zip`,
+      description: "you play as jhonny and you shoot gangsters. i made possible for a multiplayer game, but since i dont have servers for this, you will have to use hamachi if you dont play multiplayer locally. i also dont recomand shooting until all the players are connected :)",
+      downloadUrls: ["jhonnyGame.zip"],
     },
     {
       id: 1,
-      title: "project1",
-      thumbnail: phos,
-      description: "This is a description for Project 2.",
-      downloadUrl: `jhonnyGame.zip`,
+      title: "video in ascii",
+      thumbnail: badApple,
+      description: "this thing plays any video in ascii. the fize of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can abuse their servers further more. even after it download wait until the button on which you pressed to download it, does not show 'combining files'",
+      downloadUrls: ["asciiVideo.zip", "badApple.zip"],
     },
     {
       id: 2,
-      title: "project2",
-      thumbnail: phos,
-      description: "This is a description for Project 3.",
-      downloadUrl: `jhonnyGame.zip`,
+      title: "gabriel the hungry",
+      thumbnail: GabrielIsHungry,
+      description: "this is the story of gabriel",
+      downloadUrls: [`GabrielIsHungry.zip`],
     },
     {
       id: 3,
-      title: "project3",
-      thumbnail: phos,
-      description: "This is a description for Project 4.",
-      downloadUrl: `jhonnyGame.zip`,
+      title: "fight Jhon Cena",
+      thumbnail: bingChilling,
+      description: "i liked undertale. because of that, i made a game in which you fight john cena in an undertale-style fight",
+      downloadUrls: [`bingChilling.zip`],
     },
     {
       id: 4,
-      title: "project4",
-      thumbnail: phos,
-      description: "This is a description for Project 5.",
-      downloadUrl: `jhonnyGame.zip`,
+      title: "shadow wizzard money gang",
+      thumbnail: shadowGang,
+      description: "i made this with a classmate (code: 95% me, art: 1% me ) in about 3 days for a for a contest. unfortunately the contest required the usage of 'greenfoot'. this greenfoot doesnt let me export a jar file, so all i can give you is the entire project, so if you want to run it you will have to download greenfoot",
+      downloadUrls: [`shadowGang.zip`],
     },
-
+    {
+      id: 5,
+      title: "the 3 room adventure",
+      thumbnail: cppGame,
+      description: "this looks too simple for a game, and it is, except the fact that it was made in c++ using sdl2 instead of a game engine. the fize of the file is greater than 100 MB so github forced me to separate it into 2 files and combine them into 1 so i can abuse their servers further more. even after it download wait until the button on which you pressed to download it, does not show 'combining files'",
+      downloadUrls: [`cppGame.zip`,'cppGame0.zip'],
+    },
+    {
+      id: 6,
+      title: "checkers",
+      thumbnail: checkers,
+      description: "checkers",
+      downloadUrls: [`worldOfTanks.jar`],
+    },
   ];
+
   return (
     <div className="flex flex-col items-center justify-start min-h-screen p-4">
       <header className="text-center mb-8">
@@ -122,13 +235,13 @@ function Projects() {
               <p className="text-gray-300 mb-4">
                 {selectedProject.description}
               </p>
-              <a
-                href={selectedProject.downloadUrl}
-                download
+              <button
+                onClick={() => combineAndDownload(selectedProject)}
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                disabled={isLoading}
               >
-                Windows
-              </a>
+                {isLoading ? "Combining files..." : "Windows"}
+              </button>
             </div>
           </div>
         )}
