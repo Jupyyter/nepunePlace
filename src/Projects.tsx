@@ -151,7 +151,7 @@ function Projects() {
       id: 4,
       title: "shadow wizzard money gang",
       thumbnail: shadowGang,
-      description: "i made this with a classmate (code: 95% me, art: 1% me ) in about 3 days for a for a contest. unfortunately the contest required the usage of 'greenfoot'. this greenfoot doesnt let me export a jar file, so all i can give you is the entire project, so if you want to run it you will have to download greenfoot",
+      description: "i made this with a classmate (code: 95% me, art: 1% me ) for a contest. unfortunately the contest required the usage of 'greenfoot'. this greenfoot doesnt let me export a jar file, so all i can give you is the entire project, so if you want to run it you will have to download greenfoot",
       downloadUrls: [`shadowGang.zip`],
     },
     {
