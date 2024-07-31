@@ -81,7 +81,7 @@ function Projects() {
 
       // Fetch all files, extract their contents, and add to the main zip
       await Promise.all(
-        project.downloadUrls.map(async (url, index) => {
+        project.downloadUrls.map(async (url) => {
           const response = await fetch(url);
           const blob = await response.blob();
 
@@ -138,7 +138,7 @@ function Projects() {
       title: "gabriel the hungry",
       thumbnail: GabrielIsHungry,
       description: "this is the story of gabriel",
-      downloadUrls: [`GabrielIsHungry.zip`],
+      downloadUrls: [`GabrielIsHungry.zip`,'GabrielIsHungry0.zip'],
     },
     {
       id: 3,
