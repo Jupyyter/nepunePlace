@@ -46,6 +46,11 @@ const TAGS = {
     description: "developed using C#",
     color: "bg-purple-900",
   },
+  GDSCRIPT: {
+    name: "Gdscript",
+    description: "developed using Gdscript",
+    color: "bg-green-900",
+  },
   JAVA: {
     name: "Java",
     description: "developed using Java",
@@ -229,7 +234,7 @@ function Projects() {
       thumbnail: GabrielIsHungry,
       description: "this is the story of gabriel",
       downloadUrls: [`GabrielIsHungry.zip`, "GabrielIsHungry0.zip"],
-      tags: ["GODOT", "LARGE_FILE"],
+      tags: ["GODOT", "GDSCRIPT", "LARGE_FILE"],
     },
     {
       id: 3,
