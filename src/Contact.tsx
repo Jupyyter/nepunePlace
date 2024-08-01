@@ -1,4 +1,3 @@
-import React from 'react';
 import phoneIcon from "../imgs/phone.jpg";
 import mailIcon from "../imgs/mail.jpg";
 import githubIcon from "../imgs/github.jpg";

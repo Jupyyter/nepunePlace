@@ -1,8 +1,5 @@
-import React from 'react';
-// Import your image
-import experience from '../imgs/Sprite-0001.png'; // Adjust the path as needed
+import experience from '../imgs/Sprite-0001.png';
 
-// Component for list items
 const ListItem = ({ text }: { text: string }) => (
   <p className="text-xl">{text}</p>
 );
