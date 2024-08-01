@@ -34,7 +34,7 @@ const App: React.FC = () => {
           backgroundColor: "black",
         }}
       >
-        <div className="sticky top-0 z-10 bg-black bg-opacity-25">
+        <div className="sticky top-0 z-10 bg-black bg-opacity-75">
           <Menu />
         </div>
         <Routes>

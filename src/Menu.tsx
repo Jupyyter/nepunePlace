@@ -22,7 +22,7 @@ const Menu: React.FC = () => {
               className={`text-white px-5 py-3 rounded-md text-sm sm:text-base font-medium m-1 sm:m-2 ${
                 location.pathname === item.path
                   ? "bg-red-900" // Active button color
-                  : "bg-gray-600 bg-opacity-50 hover:bg-yellow-500" // Inactive button color
+                  : "bg-gray-600 hover:bg-yellow-500" // Inactive button color
               }`}
             >
               {item.label}
