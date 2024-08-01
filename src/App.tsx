@@ -11,12 +11,9 @@ const App: React.FC = () => {
   const Home = () => (
     <div className="flex-grow flex items-center justify-center">
       <main className="text-center p-4">
-        <h1 className="text-4xl font-bold mb-4">this is a cool heading</h1>
+        <h1 className="text-4xl font-bold mb-4">nepune place</h1>
         <p className="text-lg">
-          this site is soo cool, you can see things like: jupiter (the planet), the "about me" page, my projects, and even my contacts!
-        </p>
-        <p className="text-lg">
-        also you might not want to refresh this site as github panicks every time and throws a 404 error (i dont have money for my own servers)
+          i use this site to represent myself on the internet and showcase my programs. nothing much
         </p>
       </main>
     </div>

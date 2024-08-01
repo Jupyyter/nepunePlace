@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import JSZip from "jszip";
 import jhonny from "../imgs/jhonny.png";
 import badApple from "../imgs/badApple.png";
 import GabrielIsHungry from "../imgs/GabrielIsHungry.png";
@@ -7,6 +6,7 @@ import bingChilling from "../imgs/bingChilling.png";
 import shadowGang from "../imgs/shadowGang.png";
 import cppGame from "../imgs/cppGame.png";
 import checkers from "../imgs/checkers.png";
+import { combineAndDownload } from "./fileUtils";
 
 const TAGS = {
   UNITY: {
@@ -118,96 +118,7 @@ function Projects() {
     setSelectedProject(null);
   };
 
-  const handleDownload = (downloadUrls: string[]) => {
-    downloadUrls.forEach((url) => {
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = url.split("/").pop() || "";
-      link.click();
-    });
-  };
   const [isLoading, setIsLoading] = useState(false);
-
-  async function combineAndDownload(project: Project) {
-    setIsLoading(true);
-
-    if (!("showSaveFilePicker" in window)) {
-      alert(
-        "Your browser doesn't support this feature. Files will be downloaded separately."
-      );
-      handleDownload(project.downloadUrls);
-      setIsLoading(false);
-      return;
-    }
-
-    let saveHandle;
-    try {
-      // Call showSaveFilePicker immediately after user interaction
-      saveHandle = await window.showSaveFilePicker({
-        suggestedName: `${project.title}.zip`,
-        types: [
-          {
-            description: "ZIP Archive",
-            accept: { "application/zip": [".zip"] },
-          },
-        ],
-      });
-    } catch (err) {
-      // User cancelled the save dialog
-      if (err instanceof Error && err.name === "AbortError") {
-        console.log("File save cancelled by user");
-      } else {
-        console.error("Error opening file picker:", err);
-        alert(
-          "Unable to open file picker. Files will be downloaded separately."
-        );
-        handleDownload(project.downloadUrls);
-      }
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      const mainZip = new JSZip();
-
-      // Fetch all files, extract their contents, and add to the main zip
-      await Promise.all(
-        project.downloadUrls.map(async (url) => {
-          const response = await fetch(url);
-          const blob = await response.blob();
-
-          // Read the zip file
-          const zip = await JSZip.loadAsync(blob);
-
-          // Extract and add each file from the zip to the main zip
-          await Promise.all(
-            Object.keys(zip.files).map(async (filename) => {
-              const content = await zip.files[filename].async("blob");
-              mainZip.file(filename, content);
-            })
-          );
-        })
-      );
-
-      // Generate the final zip file
-      const content = await mainZip.generateAsync({ type: "blob" });
-
-      // Use the previously obtained file handle to save the file
-      const writable = await saveHandle.createWritable();
-      await writable.write(content);
-      await writable.close();
-
-      alert("Files combined and saved successfully!");
-    } catch (err) {
-      console.error("Error saving file:", err);
-      alert(
-        "There was an error saving the combined file. Files will be downloaded separately."
-      );
-      handleDownload(project.downloadUrls);
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   const projects: Project[] = [
     {
@@ -370,12 +281,12 @@ function Projects() {
                 {selectedProject.description}
               </p>
               <button
-                onClick={() => combineAndDownload(selectedProject)}
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                disabled={isLoading}
-              >
-                {isLoading ? "Combining files..." : "Windows"}
-              </button>
+      onClick={() => combineAndDownload(selectedProject, setIsLoading)}
+      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+      disabled={isLoading}
+    >
+      {isLoading ? "Combining files..." : "Windows"}
+    </button>
             </div>
           </div>
         )}
