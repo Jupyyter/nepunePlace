@@ -256,7 +256,7 @@ function Projects() {
       description:
         "this looks too simple for a game, and it is, except the fact that it was made in c++ using sdl2 instead of a game engine",
       downloadUrls: [`cppGame.zip`, "cppGame0.zip"],
-      tags: ["CPP", "LARGE_FILE", "SDL2"],
+      tags: ["CPP", "SDL2", "LARGE_FILE"],
     },
     {
       id: 6,
