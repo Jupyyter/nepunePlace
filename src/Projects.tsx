@@ -212,13 +212,14 @@ function Projects() {
       description:
         "you play as jhonny and you shoot gangsters. i made possible for a multiplayer game, but since i dont have servers for this, you will have to use hamachi if you dont play multiplayer locally. i also dont recomand shooting until all the players are connected :)",
       downloadUrls: ["jhonnyGame.zip"],
-      tags: ["UNITY","C#"],
+      tags: ["UNITY", "C#"],
     },
     {
       id: 1,
       title: "video in ascii",
       thumbnail: badApple,
-      description: "this thing plays any video in ascii, but the default video is bad apple",
+      description:
+        "this thing plays any video in ascii, but the default video is bad apple",
       downloadUrls: ["asciiVideo.zip", "badApple.zip"],
       tags: ["CPP", "LARGE_FILE"],
     },
@@ -237,7 +238,7 @@ function Projects() {
       description:
         "i liked undertale. because of that, i made a game in which you fight john cena in an undertale-style fight",
       downloadUrls: [`bingChilling.zip`],
-      tags: ["UNITY","C#"],
+      tags: ["UNITY", "C#"],
     },
     {
       id: 4,
@@ -328,37 +329,37 @@ function Projects() {
                 {selectedProject.title}
               </h3>
               <div className="flex flex-wrap mb-2">
-              {selectedProject.tags.map((tagKey) => (
-      <div 
-        key={tagKey} 
-        className="relative inline-block mr-2 mb-2"
-        onMouseEnter={() => setHoveredTag(tagKey)}
-        onMouseLeave={() => setHoveredTag(null)}
-        ref={(el) => {
-          if (tagRefs.current) {
-            tagRefs.current[tagKey] = el;
-          }
-        }}
-      >
-        <span 
-          className={`${TAGS[tagKey].color} text-white text-xs px-2 py-1 rounded cursor-help`}
-        >
-          {TAGS[tagKey].name}
-        </span>
-        {hoveredTag === tagKey && (
-          <span 
-            className={`
+                {selectedProject.tags.map((tagKey) => (
+                  <div
+                    key={tagKey}
+                    className="relative inline-block mr-2 mb-2"
+                    onMouseEnter={() => setHoveredTag(tagKey)}
+                    onMouseLeave={() => setHoveredTag(null)}
+                    ref={(el) => {
+                      if (tagRefs.current) {
+                        tagRefs.current[tagKey] = el;
+                      }
+                    }}
+                  >
+                    <span
+                      className={`${TAGS[tagKey].color} text-white text-xs px-2 py-1 rounded cursor-help`}
+                    >
+                      {TAGS[tagKey].name}
+                    </span>
+                    {hoveredTag === tagKey && (
+                      <span
+                        className={`
               absolute bg-gray-900 text-white text-xs p-2 rounded z-50 break-words
               w-48 
-              ${tooltipPosition.isAbove ? 'bottom-full mb-1' : 'top-full mt-1'}
-              ${tooltipPosition.alignRight ? 'right-0' : 'left-0'}
+              ${tooltipPosition.isAbove ? "bottom-full mb-1" : "top-full mt-1"}
+              ${tooltipPosition.alignRight ? "right-0" : "left-0"}
             `}
-          >
-            {TAGS[tagKey].description}
-          </span>
-        )}
-      </div>
-    ))}
+                      >
+                        {TAGS[tagKey].description}
+                      </span>
+                    )}
+                  </div>
+                ))}
               </div>
               <p className="text-gray-300 mb-4">
                 {selectedProject.description}
